@@ -1,0 +1,253 @@
+[bar/dvid]
+monitor = ${env:MONITOR:DVI-I-1}
+width = 100%
+height = 30
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+bottom = true
+background = #00000000
+foreground = #004350
+line-size = 0
+line-color = #3fbec7
+border-top-size = 0
+border-bottom-size = -8
+border-top-color = #004350
+border-bottom-color = #00000000
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+;Ubuntu Mono
+font-0= Inconsolata:style=Regular:size=10:antialias=true
+font-1= FontAwesome:size=12:antialias=true;0
+font-2 = "GE Inspira:size=10:antialias=true;1"
+font-3 = Unifont:size=10:antialias=true
+font-4 = DroidSansMono:style=Regular:size=10:antialias=true
+modules-left = i3 xkeyboard
+modules-center = cpu
+modules-right = battery xbacklight volume date time
+;wm-restack = i3
+;override-redirect = true
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+cursor-click = pointer
+cursor-scroll = ns-resize
+tray-position = right
+;tray-padding = 1
+
+[bar/dvii]
+monitor = ${env:MONITOR:DVI-I-1}
+width = 100%
+height = 30
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+bottom = true
+background = #00000000
+foreground = #004350
+line-size = 0
+line-color = #3fbec7
+border-top-size = 0
+border-bottom-size = -8
+border-top-color = #004350
+border-bottom-color = #00000000
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+;Ubuntu Mono
+font-0= Inconsolata:style=Regular:size=10:antialias=true
+font-1= FontAwesome:size=12:antialias=true;0
+font-2 = "GE Inspira:size=10:antialias=true;1"
+font-3 = Unifont:size=10:antialias=true
+font-4 = DroidSansMono:style=Regular:size=10:antialias=true
+modules-left = i3 xkeyboard
+modules-right = battery xbacklight volume date time
+;wm-restack = i3
+;override-redirect = true
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+cursor-click = pointer
+cursor-scroll = ns-resize
+;tray-position = center
+;tray-padding = 0
+
+[module/xkeyboard]
+type = internal/xkeyboard
+label-layout =
+label-indicator =%{T2}%{T2}
+label-indicator-foreground = #ff961e
+label-indicator-padding = 0
+label-indicator-margin = 0
+
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+index-sort = true
+wrapping-scroll = false
+strip-wsnumbers = true
+label-mode-font = 1
+label-mode-padding = 1
+label-mode-foreground = #93d500
+label-focused =%{T1}%name%
+label-focused-foreground = #007381
+label-focused-background = #004350 
+label-focused-padding = 1
+label-unfocused =%{T1}%name%
+label-unfocused-padding = 1
+label-unfocused-foreground = #007381
+label-visible =%{T1}%name%
+label-visible-padding = 1
+label-urgent =%{T1}%name%
+label-urgent-foreground = #b20094
+label-urgent-padding = 1
+
+[module/mpd]
+type = internal/mpd
+format-online =<icon-prev> <toggle> <label-song> <icon-stop> <icon-next>
+
+icon-prev =
+icon-stop =
+icon-play =
+icon-pause =
+icon-next =	
+
+label-song-maxlen = 15
+label-song-ellipsis = true
+label-song-font = 0
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 80
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+label = %temperature%
+label-foreground = #004350
+label-warn = %temperature% 
+label-warn-foreground = #3fbec7
+format-warn-foreground = #b20094
+ramp-0 =
+ramp-1 =
+ramp-2 =
+ramp-3 =
+ramp-4 =
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ACAD
+full-at = 98
+format-charging = <animation-charging><label-charging>
+format-charging-foreground = #00886f
+format-discharging = <ramp-capacity><label-discharging>
+format-discharging-foreground = #ff961e
+format-full = <label-full>
+format-full-prefix =
+format-full-prefix-font = 3
+format-full-prefix-foreground = #00da82
+label-charging ="⁺ "
+label-discharging ="⁻ "
+label-full ="ⁿ "
+label-charging-foreground=#9cf358
+label-discharging-foreground=#d8f840
+label-full-foreground = #49ff77
+ramp-capacity-font = 3
+animation-charging-font = 3
+label-charging-font = 3
+label-discharging-font = 3
+ramp-capacity-0 =
+ramp-capacity-1 =
+ramp-capacity-2 =
+ramp-capacity-3 =
+ramp-capacity-4 =
+ramp-capacity-0-foreground = #b40044
+ramp-capacity-1-foreground = #b45544
+ramp-capacity-2-foreground = #d8f840
+ramp-capacity-3-foreground = #9cf358
+ramp-capacity-4-foreground = #49ff77
+animation-charging-0 =
+animation-charging-1 =
+animation-charging-2 =
+animation-charging-3 =
+animation-charging-4 =
+animation-charging-0-foreground = #b40044
+animation-charging-1-foreground = #b45544
+animation-charging-2-foreground = #d8f840
+animation-charging-3-foreground = #9cf358
+animation-charging-4-foreground = #49ff77
+animation-charging-framerate = 4000
+
+[module/cpu]
+type = internal/cpu
+interval = 2 
+format = <label> <ramp-coreload>
+format-prefix =
+;format-overline = #77f9ff
+label = 
+label-foreground = #004350
+ramp-coreload-0-foreground = #004350
+ramp-coreload-1-foreground = #007381
+ramp-coreload-2-foreground = #3fbec7
+ramp-coreload-3-foreground = #77f9ff
+ramp-coreload-0=
+ramp-coreload-1=
+ramp-coreload-2=
+ramp-coreload-3=
+
+[module/date]
+type = internal/date
+interval = 60
+date ="  " 
+date-alt=" %y-%m-%d " 
+label = %date%
+label-foreground = #004350
+
+[module/time]
+type = internal/date
+interval = 1
+time =%H:%M%
+label =%time%
+label-foreground = #007381
+
+[module/xbacklight]
+type = internal/xbacklight
+format =<label><bar>
+label ="%{T1} "
+label-foreground = #ddf3ff
+bar-width = 500
+bar-indicator =
+bar-fill =
+bar-empty =
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/volume]
+type = internal/volume
+format-volume = <label-volume><bar-volume>
+label-volume ="%{T3}%{T1}"
+label-volume-foreground = #7afac6
+label-muted ="%{T3}%{T1}"
+label-muted-foreground = #dc0059
+bar-volume-width = 250
+bar-volume-gradient = false
+bar-volume-indicator =
+bar-volume-fill =
+bar-volume-empty =
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+compositing-background = over
+compositing-foreground = over
+compositing-border = over
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0

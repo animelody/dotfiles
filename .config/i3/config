@@ -1,0 +1,279 @@
+#-----------------------------------------------------setting i3 variables-----------------------------------------------------#¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ₊₋₀₁₂₃₄₅₆₇₈₉ₐₑₒₓₗₔ
+set $mod Mod4
+set $alt Mod1
+set $m1ws1 "1:"
+set $m1ws2 "2:"
+set $m1ws3 "3:"
+set $m1ws4 "4:"
+set $m1ws5 "5:"
+set $m1ws6 "6:"
+set $m1ws7 "7:"
+set $m1ws8 "8:"
+set $m1ws9 "9:"
+set $m1ws0 "10:"
+set $m2ws1 "11:"
+set $m2ws2 "12:"
+set $m2ws3 "13:"
+set $m2ws4 "14:"
+set $m2ws5 "15:"
+set $m2ws6 "16:"
+set $m2ws7 "17:"
+set $m2ws8 "18:"
+set $m2ws9 "19:"
+set $m2ws0 "20:"
+set $m3wsk "21:"
+#----------------------------------------------------------window stuff---------------------------------------------------------#
+font pango: Ubunto Mono 0
+
+floating_modifier $mod
+
+exec_always --no-startup-id xrandr --output DVI-I-1 --auto --pos 0x0 --primary --output DVI-D-0 --auto --pos 1920x300 --output HDMI-0 --mode 1920x1080 --pos 3360x120
+
+workspace $m1ws1 output DVI-I-1
+workspace $m1ws2 output DVI-I-1
+workspace $m1ws3 output DVI-I-1
+workspace $m1ws4 output DVI-I-1
+workspace $m1ws5 output DVI-I-1
+workspace $m1ws6 output DVI-I-1
+workspace $m1ws7 output DVI-I-1
+workspace $m1ws8 output DVI-I-1
+workspace $m1ws9 output DVI-I-1
+workspace $m1ws0 output DVI-I-1
+workspace $m2ws1 output DVI-D-0
+workspace $m2ws2 output DVI-D-0
+workspace $m2ws3 output DVI-D-0
+workspace $m2ws4 output DVI-D-0
+workspace $m2ws5 output DVI-D-0
+workspace $m2ws6 output DVI-D-0
+workspace $m2ws7 output DVI-D-0
+workspace $m2ws8 output DVI-D-0
+workspace $m2ws9 output DVI-D-0
+workspace $m2ws0 output DVI-D-0
+workspace $m3wsk output HDMI-0
+
+#single mon
+#exec_always --no-startup-id xrandr --output DVI-D-0 --auto --primary --output DVI-I-1 --off --output HDMI-0 --off
+#workspace $m1ws6 output DVI-D-1
+#workspace $m1ws7 output DVI-D-1
+#workspace $m1ws8 output DVI-D-1
+#workspace $m1ws9 output DVI-D-1
+#workspace $m1ws0 output DVI-D-1
+#
+
+
+assign		[class="Firefox-nightly"]				workspace $m1ws2
+assign		[title="mutt"]					workspace $m1ws2
+assign		[class="Wine"]					workspace $m1ws8
+assign		[title="mpv_kids"]				workspace $m3wsk
+assign		[title="mpv_adult"]				workspace $m3wsa
+#assign		[class="Chromium"]				workspace $m3wsk
+assign		[title="mpd client"]				workspace $m1ws8
+assign		[class="Pinta"]					workspace $m1ws0
+assign		[class="Transmission"]				workspace $m1ws7
+assign		[class="Qemu"]					workspace $m1ws4
+assign		[class="Steam"]					workspace $m1ws3
+assign 		[class="Pavucontrol"]				workspace $m2ws1
+
+#for_window	[class="Pavucontrol"]				floating enable
+for_window	[title="Teflote"]				floating enable,sticky enable
+for_window	[class="Tk"]					floating enable
+#for_window	[class="Lmms"]					floating enable
+for_window	[class="Signal"]					floating enable
+
+for_window	[title="floaty"]				floating enable,sticky enable
+for_window	[title="suer"]					floating enable
+for_window	[title="Color Picker"]				floating enable
+for_window	[title="Settings"]				floating enable
+
+new_window	pixel 1
+#--------------------------------------------------------window setting----------------------------------------------------------#
+#[      client type       ]	[bordr]		[bkgrd] 	[frgrd] 	[ ind ]		[child]   
+  client.focused		#004350 	#004350  	#004350 	#004350 	#004350
+  client.focused_inactive       #001c24  	#001c24  	#001c24 	#001c24 	#001c24
+  client.unfocused 	        #001c24  	#001c24  	#001c24 	#001c24 	#001c24
+  client.urgent 	     	#b20094  	#004350  	#ff7fe9 	#b20094 	#b20094
+#-----------------------------------------------------------startups-------------------------------------------------------------#
+exec_always --no-startup-id feh --bg-fill ~/.i/pap/
+exec --no-startup-id compton -cCGb --backend glx --vsync opengl
+exec_always --no-startup-id ~/.i/sh/poly.sh
+exec_always killall xfce4-panel
+#exec_always --no-startup-id xfce4-panel --disable-wm-check
+exec --no-startup-id termite
+exec --no-startup-id mpd
+exec --no-startup-id termite -t 'mpd client' -e ncmpcpp
+exec_always --no-startup-id conky
+#----------------------------------------------------------xf86 bindings----------------------------------------------------------#
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioStop exec mpc stop
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86MonBrightnessUp exec xbacklight -inc 4
+bindsym XF86MonBrightnessDown exec xbacklight -dec 4
+#------------------------------------------------------------shortcuts-------------------------------------------------------------#
+#terms
+bindsym $mod+Return		exec termite
+bindsym $mod+Shift+Return	exec termite -t "Teflote"
+bindsym $mod+Ctrl+Return	exec termite -t "Teflote" -e "sudo su"
+bindsym $mod+Ctrl+f		exec gedit ~/.i/code/ftuseful.md
+#nightly
+bindsym $mod+n exec firefox-nightly
+bindsym $mod+shift+p exec java -jar ~/dls/PkHonor.jar
+#kiddos
+bindsym $mod+y workspace $m3wsk;exec chromium youtube.com netflix.com hulu.com
+#screen
+bindsym Print exec scrot ~/.i/p/fetch/$(date +%Y%m%d%H%M%S).png
+bindsym $mod+Ctrl+l		exec lmms /home/i/ohmy33434-01.mmpz
+bindsym $mod+t exec thunar
+#-----------------------------------------------------------modes------------------------------------------------------------------#
+#modes
+mode "" {
+	bindsym t exec systemctl poweroff -i
+	bindsym r exec systemctl reboot -i
+	bindsym s exec systemctl suspend -i;mode "default"
+	bindsym h mode "default";exec systemctl hibernate -i
+	bindsym Escape mode "default"
+	bindsym e mode "default"
+	bindsym space mode "default"
+}
+
+mode "" {
+	bindsym j exec xbacklight =1;mode "default"
+	bindsym k exec xbacklight -2
+	bindsym l exec xbacklight +2
+	bindsym semicolon exec xbacklight =45;mode "default"
+	bindsym space mode "default"
+}
+mode "" {
+	bindsym p exec mpv --title "mpv_kids" --loop-playlist --shuffle /videos/tv/paw-patrol/*;mode "default"
+	bindsym v exec mpv --title "mpv_kids" --loop-playlist --shuffle /videos/mu/vulf/*;mode "default"
+	bindsym space mode "default"
+}
+
+mode "" {
+	bindsym g exec signal-desktop --start-in-tray;mode "default"
+	bindsym s exec slack;mode "default"
+	bindsym m exec ~/.i/scripts/mutt;mode "default"
+	bindsym t exec steam -silent;mode "default"
+	bindsym space mode "default"
+}
+
+mode "" {
+	bindsym c exec pavucontrol;mode "default"
+	bindsym p exec termite -t "mpd client" -e 'ncmpcpp';mode "default"
+	bindsym g exec gpmdp;mode "default"
+	bindsym j exec mpc prev
+	bindsym k exec mpc toggle
+	bindsym l exec mpc stop
+	bindsym semicolon exec mpc next
+	bindsym u exec pactl set-sink-volume 0 -3%
+	bindsym i exec pactl set-sink-volume 0 +3%
+	bindsym e exec amixer sset Headphone toggle
+	bindsym r exec amixer sset Speaker toggle
+	bindsym m mode "default"
+	bindsym space mode "default"
+}
+
+mode "" {
+	bindsym j resize shrink width 20px
+	bindsym k resize grow height 20px
+	bindsym l resize shrink height 20px
+	bindsym semicolon resize grow width 20px
+	bindsym $mod+j focus left
+	bindsym $mod+k focus down
+	bindsym $mod+l focus up
+	bindsym $mod+semicolon focus right
+	bindsym $mod+Shift+j move left
+	bindsym $mod+Shift+k move down
+	bindsym $mod+Shift+l move up
+	bindsym $mod+Shift+semicolon move right
+	bindsym space mode "default"
+}
+
+#mode binds
+bindsym $mod+r mode ""
+bindsym $mod+u mode ""
+bindsym $mod+i mode ""
+bindsym $mod+g mode ""
+bindsym $mod+m mode ""
+bindsym $mod+x mode ""
+bindsym $mod+c mode ""
+#--------------------------------------------------------------i3------------------------------------------------------------------#
+#kill
+bindsym $mod+Shift+q kill
+#focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+bindsym $mod+a focus parent
+bindsym $mod+d focus child
+#move
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+#scratchpad
+bindsym $mod+grave scratchpad show
+bindsym $mod+Shift+grave move scratchpad
+#layouts
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+f fullscreen toggle
+#float
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+#go to
+bindsym $mod+1 workspace $m1ws1
+bindsym $mod+2 workspace $m1ws2
+bindsym $mod+3 workspace $m1ws3
+bindsym $mod+4 workspace $m1ws4
+bindsym $mod+5 workspace $m1ws5
+bindsym $mod+6 workspace $m1ws6
+bindsym $mod+7 workspace $m1ws7
+bindsym $mod+8 workspace $m1ws8
+bindsym $mod+9 workspace $m1ws9
+bindsym $mod+0 workspace $m1ws0
+bindsym $alt+$mod+1 workspace $m2ws1
+bindsym $alt+$mod+2 workspace $m2ws2
+bindsym $alt+$mod+3 workspace $m2ws3
+bindsym $alt+$mod+4 workspace $m2ws4
+bindsym $alt+$mod+5 workspace $m2ws5
+bindsym $alt+$mod+6 workspace $m2ws6
+bindsym $alt+$mod+7 workspace $m2ws7
+bindsym $alt+$mod+8 workspace $m2ws8
+bindsym $alt+$mod+9 workspace $m2ws9
+bindsym $alt+$mod+0 workspace $m2ws0
+bindsym $alt+$mod+k workspace $m3wsk
+#move to
+bindsym $mod+Shift+1 move container to workspace $m1ws1
+bindsym $mod+Shift+2 move container to workspace $m1ws2
+bindsym $mod+Shift+3 move container to workspace $m1ws3
+bindsym $mod+Shift+4 move container to workspace $m1ws4
+bindsym $mod+Shift+5 move container to workspace $m1ws5
+bindsym $mod+Shift+6 move container to workspace $m1ws6
+bindsym $mod+Shift+7 move container to workspace $m1ws7
+bindsym $mod+Shift+8 move container to workspace $m1ws8
+bindsym $mod+Shift+9 move container to workspace $m1ws9
+bindsym $mod+Shift+0 move container to workspace $m1ws0
+bindsym $alt+$mod+Shift+1 move container to workspace $m2ws1
+bindsym $alt+$mod+Shift+2 move container to workspace $m2ws2
+bindsym $alt+$mod+Shift+3 move container to workspace $m2ws3
+bindsym $alt+$mod+Shift+4 move container to workspace $m2ws4
+bindsym $alt+$mod+Shift+5 move container to workspace $m2ws5
+bindsym $alt+$mod+Shift+6 move container to workspace $m2ws6
+bindsym $alt+$mod+Shift+7 move container to workspace $m2ws7
+bindsym $alt+$mod+Shift+8 move container to workspace $m2ws8
+bindsym $alt+$mod+Shift+9 move container to workspace $m2ws9
+bindsym $alt+$mod+Shift+0 move container to workspace $m2ws0
+bindsym $alt+$mod+Shift+k move container to workspace $m3wsk
+bindsym $alt+$mod+Shift+a move container to workspace $m3wsa
+#restart
+bindsym $mod+Shift+r restart
+#exit
+bindsym $mod+Shift+e exit 

@@ -1,0 +1,106 @@
+conky.config = {
+	-- position
+    	alignment = 'tl',
+	gap_x = 15,
+	gap_y = -30,
+	xinerama_head = 0,
+	--size
+	minimum_width = 1890,
+	minimum_height = 1180,
+	maximum_width = 1870,
+	short_units = true ,
+	pad_percents =  1,
+	-- background_setting	
+    	background = false,
+	-- borders
+    	border_width = 0, 
+	-- frame
+	draw_borders = false,
+	stippled_borders = 0,
+    	draw_graph_borders = true,
+    	draw_outline = false,
+	-- shadows
+	draw_shades = false,
+    	-- better fonts
+	use_xft = true,
+	xftalpha = 0.7,
+    	out_to_console = false,
+    	out_to_stderr = false,
+    	extra_newline = false,
+	-- window settings
+	own_window = true,
+    	own_window_class = 'Conky',
+        own_window_transparent = true,
+	-- own_window_argb_visual = true,
+	-- own_window_argb_value = 0,
+	own_window_type = 'override',
+	-- update interval
+	update_interval = 0.5,
+	total_run_times = 0,
+	uppercase = false,
+    	use_spacer = 'none',
+	-- anti-flickering
+	double_buffer = true,
+	show_graph_scale = false,
+    	show_graph_range = false,
+	-- text_buffer_size = 1000,
+   	font = 'Liberation Sans:bold:size=30', --important for shades
+    	template0 = 'Liberation Sans:bold:size=36',
+    	template1 = 'Liberation Mono:bold:size=39',
+    	template2 = 'Liberation Mono:bold:size=81',
+    	template3 = 'Liberation Mono:bold:size=27',
+    	template4 = 'Liberation Mono:bold:size=36'
+}
+conky.text = [[${font Inconsolata:bold:size=4}${color ff0040}${font Inconsolata:bold:size=46}${time %H:%M}${color 008b94}${font Inconsolata:bold:size=32}${time .%S}${font Inconsolata:bold:size=22}
+${time %A, %B %d, %Y}${font Inconsolata:bold:size=11}
+${font Inconsolata:bold:size=11}
+
+${tab 1230}${color 00ffc7}${fs_used /}/${fs_size /}${tab 307}${fs_used /home/i}/${fs_size /home/i}
+${tab 1200}${color 00ffc7}${font FontAwesome:regular:size=16}${tab 16}${color 00886f}${fs_bar 20,250 /}${tab 75}${color 00ffc7}${tab 16}${color 00886f}${fs_bar 20,250 /home/i}${font Inconsolata:bold:size=11}
+${color ff2574}${tab 30}${cpu cpu1}%${tab 615}${color 00ffc7}${font Inconsolata:bold:size=11}${fs_used /home/i/.i/tmp}/${fs_size /home/i/.i/tmp}${tab 307}${fs_used /music}/${fs_size /music}
+${color ff2574}${font FontAwesome:regular:size=16} ${color bd0044}${cpugraph cpu1 20,550 -l}${tab 600}${color 00ffc7}${tab 16}${color 00886f}${fs_bar 20,250 /home/i/.i/tmp}${tab 75}${color 00ffc7}${tab 32}${color 00886f}${fs_bar 20,250 /music}${font Inconsolata:bold:size=11} 
+${color ff2574}${font Inconsolata:bold:size=11}${tab 30}${cpu cpu2}%${tab 615}${color 00ffc7}${font Inconsolata:bold:size=11}${fs_used /home/i/.local/share/Steam}/${fs_size /home/i/.local/share/Steam}${color 00ffc7}${tab 307}${font Inconsolata:bold:size=11}${fs_used /windeo}/${fs_size /windeo}
+${font FontAwesome:regular:size=16}${tab 30}${color bd0044}${cpugraph cpu2 20,550 -l}${tab 15}${tab 600}${font FontAwesome:regular:size=16}${color 00ffc7}${tab 16}${color 00886f}${fs_bar 20,250 /videos}${tab 75}${color 00ffc7}${tab 24}${color 00886f}${fs_bar 20,250 /home/i/.local/share/Steam}${font Inconsolata:bold:size=11}
+${color ff2574}${font Inconsolata:bold:size=11}${tab 30}${cpu cpu3}%${tab 615}${color 00ffc7}${font Inconsolata:bold:size=11}${fs_used /videos}/${fs_size /videos}${tab 307}${fs_used /backup}/${fs_size /backup}
+${font FontAwesome:regular:size=16}${tab 30}${color bd0044}${cpugraph cpu3 20,550 -l}${tab 600}${color 00ffc7}${font FontAwesome:regular:size=16}${tab 16}${color 00886f}${fs_bar 20,250 /windeo}${tab 75}${color 00ffc7}${font FontAwesome:regular:size=16}${tab 32}${color 00886f}${fs_bar 20,250 /backup}${font Inconsolata:bold:size=11}
+${color ff2574}${font Inconsolata:bold:size=11}${tab 30}${cpu cpu4}%${tab 615}${color 00ffc7}${font Inconsolata:bold:size=11}${fs_used /vio}/${fs_size /vio}${tab 307}${fs_used /viideos}/${fs_size /viideos}
+${font FontAwesome:regular:size=16}${tab 30}${color bd0044}${cpugraph cpu4 20,550 -l}${tab 600}${color 00ffc7}${font FontAwesome:regular:size=16}${color 00ffc7}${font FontAwesome:regular:size=16}${tab 16}${color 00886f}${fs_bar 20,250 /vio}${tab 75}${font FontAwesome:regular:size=16}${color 00ffc7}${tab 16}${color 00886f}${fs_bar 20,250 /viideos}${font Inconsolata:bold:size=11}
+${tab 30}${font Inconsolata:bold:size=11}${color bd0044}top pid by cpu${tab 120}cpu usage${tab 615}${font Inconsolata:bold:size=11}${color 00886f}top pid by io${tab 378}read/write${font Inconsolata:bold:size=11}
+${tab 30}${color bd0044}1.${tab 2}${color ff2574}${top pid 1}${tab 18}${top name 1}${tab 124}${top cpu 1}%${tab 615}${color 00886f}1.${tab 1}${color 00ffc7}${top_io pid 1}${tab 18}${top_io name 1}${tab 126}${top_io io_read 1}/${top_io io_write 1}
+${tab 30}${color bd0044}2.${tab 2}${color ff2574}${top pid 2}${tab 18}${top name 2}${tab 124}${top cpu 2}%${tab 615}${color 00886f}2.${tab 1}${color 00ffc7}${top_io pid 2}${tab 18}${top_io name 2}${tab 126}${top_io io_read 2}/${top_io io_write 2}${tab 126}
+${tab 30}${color bd0044}3.${tab 2}${color ff2574}${top pid 3}${tab 18}${top name 3}${tab 124}${top cpu 3}%${tab 615}${color 00886f}3.${tab 1}${color 00ffc7}${top_io pid 3}${tab 18}${top_io name 3}${tab 126}${top_io io_read 3}/${top_io io_write 3}${tab 126}
+
+
+
+
+${color b100ff}${font Inconsolata:bold:size=11}${tab 30}${mem}/${memmax}${tab 163}${color b100ff}${font Inconsolata:bold:size=11}${swap}/${swapmax}
+${color b100ff}${font FontAwesome:regular:size=16}${tab 16}${color 6d009d}${membar 20,250}${tab 25}${color b100ff}${font FontAwesome:regular:size=16}${tab 41}${color 6d009d}${swapbar 20,250}${font Inconsolata:bold:size=11}
+${tab 30}${font Inconsolata:bold:size=11}${color 6d009d}top pid by ram${tab 120}ram usage${font Inconsolata:bold:size=11} 
+${tab 30}${color 6d009d}1.${tab 2}${color be29ff}${top_mem pid 1}${tab 18}${top_mem name 1}${tab 126}${top_mem mem_vsize 1}${tab 15}+${tab 15}${top_mem mem_res 1}
+${tab 30}${color 6d009d}2.${tab 2}${color be29ff}${top_mem pid 2}${tab 18}${top_mem name 2}${tab 126}${top_mem mem_vsize 2}${tab 15}+${tab 15}${top_mem mem_res 2}
+${tab 30}${color 6d009d}3.${tab 2}${color be29ff}${top_mem pid 3}${tab 18}${top_mem name 3}${tab 126}${top_mem mem_vsize 3}${tab 15}+${tab 15}${top_mem mem_res 3}${font Inconsolata:bold:size=6}
+
+
+
+
+
+${color 0666ff}${font Inconsolata:bold:size=11}${tab 30}${downspeedf wlp0s18f2u1} ${font Inconsolata:bold:size=11}
+${color 0666ff}${font FontAwesome:regular:size=16} ${color 002bc2}${downspeedgraph wlp0s18f2u1 20,550 -l}
+${color 0666ff}${font Inconsolata:bold:size=11}${tab 30}${upspeedf wlp0s18f2u1} 
+${color 0666ff}${font FontAwesome:regular:size=16} ${color 002bc2}${upspeedgraph wlp0s18f2u1 20,550 -l}${font Inconsolata:bold:size=11}
+${tab 30}${color 002bc2}ip:${tab 1}${color 0666ff}${addr wlp0s18f2u1}${font Inconsolata:bold:size=11}
+${tab 1430}${font FontAwesome:regular:size=13}${color a64600} ${color ff832a}${font Inconsolata:bold:size=11}${mpd_title}${font Inconsolata:bold:size=11}${tab 750}
+${tab 1450}${color #a64600}${mpd_album} - ${mpd_artist}${font Inconsolata:bold:size=11}${tab 600}
+${tab 1430}${color #a64600}${mpd_bar 5,425}${font Inconsolata:bold:size=11}${tab 100}
+${tab 1785}${color ff832a}${mpd_elapsed}/${mpd_length}${font Inconsolata:bold:size=11}${tab 250}
+
+${tab 1430}${font FontAwesome:regular:size=13}${color 5efffe} ${color 00a5b0}${font Inconsolata:bold:size=11}Available entropy
+${tab 1430}${color 5efffe}${entropy_bar 5,425}${font Inconsolata:bold:size=11}${tab 100} 
+${tab 1785}${color 00a5b0}${entropy_avail}/${entropy_poolsize} 
+
+
+${tab 30}${color 002124}${font FontAwesome:size=175}${font Inconsolata:bold:size=11}
+
+${tab 1630}${color 00d5de}${font Inconsolata:bold:size=14}${kernel}${font Inconsolata:bold:size=9}
+${tab 1730}${color 005e66}${uptime}${font Inconsolata:bold:size=7}
+]]
